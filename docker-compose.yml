@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mysql:
-    build: ./mysql
+    image: localhost:5000/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
@@ -10,7 +10,7 @@ services:
     volumes:
       - db:/var/lib/mysql
   php:
-    build: ./php
+    image: localhost:5000/php
     ports:
       - '8010:80'
     volumes:
@@ -19,7 +19,7 @@ services:
     depends_on:
       - mysql
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: localhost:5000/phpmyadmin
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=mysql
